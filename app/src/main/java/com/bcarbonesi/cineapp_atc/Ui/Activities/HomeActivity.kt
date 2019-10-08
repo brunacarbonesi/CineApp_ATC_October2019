@@ -1,6 +1,7 @@
 package com.bcarbonesi.cineapp_atc.Ui.Activities
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bcarbonesi.cineapp_atc.Adapter.TabPagerAdapter
 import com.bcarbonesi.cineapp_atc.R
@@ -17,12 +18,11 @@ class HomeActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         floatingActionButtonSearch.setOnClickListener { view ->
-            Snackbar.make(view,"Replace with your own action", Snackbar.LENGTH_LONG)
+            Snackbar.make(view,"Fazer a busca", Snackbar.LENGTH_LONG)
                 .setAction("Action",null).show()
         }
 
         configureTabLayout()
-
 
     }
 
