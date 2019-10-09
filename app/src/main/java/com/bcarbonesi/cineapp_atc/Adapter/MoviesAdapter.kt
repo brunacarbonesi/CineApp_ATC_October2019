@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bcarbonesi.cineapp_atc.Data.Movie
 import com.bcarbonesi.cineapp_atc.R
+import com.bcarbonesi.cineapp_atc.R.mipmap.ic_cine_app_vertical_cinza_foreground
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
@@ -25,7 +26,7 @@ class MoviesAdapter (
         override fun getItemCount(): Int = movies.size
 
         override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-            holder.bind(movies[position])
+            holder.bind(movies.get(position))
         }
 
         fun updateMovies(movies: List<Movie>) {
