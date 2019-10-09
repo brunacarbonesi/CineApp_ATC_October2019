@@ -25,6 +25,7 @@ class NovidadesFragment : Fragment() {
 
     private lateinit var popularMoviesAdapter: MoviesAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -69,4 +70,5 @@ class NovidadesFragment : Fragment() {
     private fun onError() {
         Snackbar.make(view!!.rootView, "Please check your internet connection", Snackbar.LENGTH_SHORT).show()
     }
+
 }
