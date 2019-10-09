@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bcarbonesi.cineapp_atc.Adapter.MoviesAdapter
@@ -49,12 +50,12 @@ class NovidadesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textViewTeste.text = "funcionando"
-
         Log.d("onViewCreated", "OnViewCreated!")
 
+        val numberOfColumns = 3
+
         recyclerViewPopularMovies.apply {
-            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL,false)
+            layoutManager = GridLayoutManager(this.context, numberOfColumns)
             adapter = popularMoviesAdapter
         }
 
