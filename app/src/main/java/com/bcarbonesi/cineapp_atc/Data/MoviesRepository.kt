@@ -32,6 +32,7 @@ object MoviesRepository {
 
                         if (responseBody != null) {
                             Log.d("Repository", "Movies: ${responseBody.movies}")
+                            //Log.d("Title", "Title: ${responseBody.movies.get(2).title}")
                         } else {
                             Log.d("Repository", "Failed to get response")
                         }
