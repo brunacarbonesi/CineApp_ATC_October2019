@@ -10,6 +10,7 @@ import com.bcarbonesi.cineapp_atc.R
 import com.bcarbonesi.cineapp_atc.R.mipmap.ic_cine_app_vertical_cinza_foreground
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.squareup.picasso.Picasso
 
 class MoviesAdapter (
 
@@ -39,9 +40,8 @@ class MoviesAdapter (
             private val poster: ImageView = itemView.findViewById(R.id.imageViewItemMoviePoster)
 
             fun bind(movie: Movie) {
-                Glide.with(itemView)
+                Picasso.get()
                     .load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
-                    .transform(CenterCrop())
                     .into(poster)
             }
         }

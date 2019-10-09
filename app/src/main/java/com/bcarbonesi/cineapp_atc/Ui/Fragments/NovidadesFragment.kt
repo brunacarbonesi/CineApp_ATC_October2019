@@ -27,10 +27,7 @@ class NovidadesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //recyclerViewPopularMovies.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL,false)
-
         popularMoviesAdapter = MoviesAdapter(listOf())
-        // recyclerViewPopularMovies.adapter = popularMoviesAdapter
 
         MoviesRepository.getPopularMovies(
             onSuccess = ::onPopularMoviesFetched,
@@ -55,6 +52,11 @@ class NovidadesFragment : Fragment() {
         textViewTeste.text = "funcionando"
 
         Log.d("onViewCreated", "OnViewCreated!")
+
+        recyclerViewPopularMovies.apply {
+            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL,false)
+            adapter = popularMoviesAdapter
+        }
 
     }
 
