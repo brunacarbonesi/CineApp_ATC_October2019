@@ -2,25 +2,73 @@ package com.bcarbonesi.cineapp_atc.Ui.Fragments
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import com.bcarbonesi.cineapp_atc.Adapter.MoviesAdapter
+import com.bcarbonesi.cineapp_atc.Data.Movie
+import com.bcarbonesi.cineapp_atc.Data.MoviesRepository
 
 import com.bcarbonesi.cineapp_atc.R
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_novidades.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class DestaqueFragment : Fragment() {
 
+    private lateinit var popularMoviesAdapter: MoviesAdapter
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        popularMoviesAdapter = MoviesAdapter(listOf())
+
+        MoviesRepository.getPopularMovies(
+            onSuccess = ::onPopularMoviesFetched,
+            onError = ::onError
+        )
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_destaque, container, false)
+        return inflater!!.inflate(R.layout.fragment_destaque, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Log.d("onViewCreated", "OnViewCreated!")
+
+        val numberOfColumns = 3
+
+        recyclerViewPopularMovies.apply {
+            layoutManager = GridLayoutManager(this.context, numberOfColumns)
+            adapter = popularMoviesAdapter
+        }
+
+    }
+
+    private fun onPopularMoviesFetched(movies: List<Movie>) {
+        Log.d("MainActivity", "Movies: ${movies.get(19).title}")
+        popularMoviesAdapter.updateMovies(movies)
+    }
+
+    private fun onError() {
+        Snackbar.make(view!!.rootView, "Please check your internet connection", Snackbar.LENGTH_SHORT).show()
+    }
 
 }
+
+
+
+

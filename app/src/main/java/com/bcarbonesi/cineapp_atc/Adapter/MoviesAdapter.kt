@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso
 class MoviesAdapter (
 
     private var movies: List<Movie>
+
 ) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
