@@ -50,12 +50,12 @@ object MoviesRepository {
             })
     }
 
-    fun getLatestMovies(
+    fun getTopRatedMovies(
         page: Int = 1,
         onSuccess: (movies: List<Movie>) -> Unit,
         onError: () -> Unit
     ) {
-        api.getLatestMovies(page = page)
+        api.getTopRatedMovies(page = page)
             .enqueue(object : Callback<GetMoviesResponse> {
                 override fun onResponse(
                     call: Call<GetMoviesResponse>,

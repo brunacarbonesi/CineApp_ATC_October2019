@@ -29,7 +29,7 @@ class DestaqueFragment : Fragment() {
 
         popularMoviesAdapter = MoviesAdapter(listOf())
 
-        MoviesRepository.getPopularMovies(
+        MoviesRepository.getTopRatedMovies(
             onSuccess = ::onPopularMoviesFetched,
             onError = ::onError
         )
@@ -59,7 +59,7 @@ class DestaqueFragment : Fragment() {
     }
 
     private fun onPopularMoviesFetched(movies: List<Movie>) {
-        Log.d("MainActivity", "Movies: ${movies.get(19).title}")
+        Log.d("MainActivity", "Movies: ${movies.get(17).title}")
         popularMoviesAdapter.updateMovies(movies)
     }
 
